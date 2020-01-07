@@ -11,19 +11,25 @@ document.addEventListener('mousemove', fn, false);
 let tooltip = document.querySelectorAll('.titletooltip');
 let _title = document.getElementById("title");
 let _overlay = document.querySelectorAll('.secret-overlay');
-let _overlayclose = document.getElementById('close-overlay');
-let _overlaytxt = document.getElementById('title-overlay');
+let _overlayclose = document.getElementById('close-overlay-btn');
+let _overlaytxt = document.getElementById('title-overlay-txt');
+let _maillink = document.getElementById('mail-link');
+let _mainnav = document.querySelectorAll('main-nav');
 
 TweenMax.set(tooltip, {opacity:0, display:"none"})
 TweenMax.set(_overlay, {opacity:0, display:"none"})
 TweenMax.set(_overlayclose, {opacity:0, display:"none"})
 TweenMax.set(_overlaytxt, {opacity:0, display:"none"})
+TweenMax.set(_maillink, {opacity:.4})
+//TweenMax.set(_mainnav, {opacity:.4})
 
 //so this works on older browsers
-_title.addEventListener("mouseenter", function(){tl.play(), false})
-_title.addEventListener("mouseleave", function(){tl.reverse(), false})
-_title.addEventListener("click", function(){overlaytl.play(), false})
-_overlayclose.addEventListener("click", function(){overlaytl.reverse(), false})
+_title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
+_title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
+_title.addEventListener("click", function(){showoverlay(), false})
+_overlayclose.addEventListener("click", function(){hideoverlay(), false})
+_maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
+_maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, null), false})
 
 
 //* ////////////////////////////////////////////////// ANIMATIONS /////////////////////////////////////////////// *//
@@ -32,21 +38,61 @@ _overlayclose.addEventListener("click", function(){overlaytl.reverse(), false})
 //
 
 
-var overlaytl = gsap.timeline();
-    overlaytl.to(_overlay, {opacity:1, display:"block", duration:.5});
-    overlaytl.to(_overlayclose, {opacity:1, display:"block", duration:.2});
-    overlaytl.to(_overlaytxt, {opacity:1, display:"block", duration:.2})
-    overlaytl.pause();
+var navelements = document.querySelectorAll('.main-nav');
+navelements.forEach(function(element){
+    element.addEventListener('mouseenter', function(e){
+        e.preventDefault();
+        // let active = document.querySelector('.selected');
+        // active.classList.remove('selected');
+        // this.classList.add('selected');
+        console.log("this is e.target.name " + element.name);
+        console.log("this is e.target.id: " + this.target.id);
+        if(document.getElementById("nav-secret").style.opacity="0"){
+          console.log('nav-secret is set to 0 opacita');
+          TweenMax.to(".main-nav", {opacity:.4, duration:.5})
+          TweenMax.to(this, {opacity:1, duration:.5})
+          TweenMax.to("#nav-secret", {opacity:0, duration:.5})
+        }
+        else{
+          TweenMax.to(".main-nav", {opacity:.4, duration:.5})
+          TweenMax.to(this, {opacity:1, duration:.5})
+        }
+    });
+    element.addEventListener('mouseleave', function(e){
+        e.preventDefault();
+        // let active = document.querySelector('.selected');
+        // active.classList.remove('selected');
+        // this.classList.add('selected');
+        if(document.getElementById("nav-secret").style.opacity="0"){
+          console.log('nav-secret is set to 0 opacita');
+          TweenMax.to(".main-nav", {opacity:1, duration:.5})
+          TweenMax.to(this, {opacity:1, duration:.5})
+          TweenMax.to("#nav-secret", {opacity:0, duration:.5})
+        }
+        else{
+          TweenMax.to(".main-nav", {opacity:1, duration:.5})
+          TweenMax.to(this, {opacity:1, duration:.5})
+          TweenMax.to("#nav-secret", {opacity:1, duration:.5})
+        }
+    });
+});
 
-// function dooverlay(event){
-//     var overlaytl = gsap.timeline();
-//     overlaytl.to(_overlay, {opacity:1, display:"block", duration:.5});
-// }
+function showoverlay(){
+  TweenMax.to(_overlay, {opacity:1, display:"block", duration:.5})
+  TweenMax.to(_overlayclose, {opacity:1, display:"block", duration:.2})
+  TweenMax.to(_overlaytxt, {opacity:1, display:"block", duration:.2})
+}
 
-// sets up a timeline and adds the animation for the tool tip, then pauses the animation so it won't play at load time.
-var tl = gsap.timeline();
-    tl.to(tooltip, {opacity:1, display:"block", duration: .2});
-    tl.pause();
+function hideoverlay(){
+  TweenMax.to(_overlay, {opacity:0, display:"none", duration:.5})
+  TweenMax.to(_overlayclose, {opacity:0, display:"none", duration:.2})
+  TweenMax.to(_overlaytxt, {opacity:0, display:"none", duration:.2})
+}
+
+function fadeinout(obj, opa, disp, dur=.2)
+{
+    TweenMax.to(obj, {opacity:opa, display:disp, duration:dur})
+}
 
 
 
@@ -128,8 +174,8 @@ const resolver = {
   }
   
   /* Some GLaDOS quotes from Portal 2 chapter 9: The Part Where He Kills You
-   * Source: http://theportalwiki.com/wiki/GLaDOS_voice_lines#Chapter_9:_The_Part_Where_He_Kills_You
-   */
+  * Source: http://theportalwiki.com/wiki/GLaDOS_voice_lines#Chapter_9:_The_Part_Where_He_Kills_You
+  */
   const strings = [
     'If You Must Know, My Name Is Chris.'
     // 'You know, being Caroline taught me a valuable lesson. I thought you were my greatest enemy. When all along you were my best friend.',

@@ -9,30 +9,60 @@
         <noscript>
             sorry, this site requires javascript.
         </noscript>
-        <div class="grid-wrapper">
+
+        <div class="grid">
             <div id="title">
                 SYNTHETIC SAMURAI
                 <span class="titletooltip">Hey. You found a secret! click to find out the origins of this title.</span>
             </div>
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Work</li>
-                    <li>Lab</li>
+                    <li><a href="#" class="main-nav">Home</a></li>
+                    <li><a href="#" class="main-nav">About</a></li>
+                    <li><a href="#" class="main-nav">Work</a></li>
+                    <li><a href="#" class="main-nav">Lab</a></li>
+                    <li><a href="#" id="nav-secret" class="main-nav">Secrets</a></li>
+                </ul>
+            </nav>
+            <div class="span-col-2">Item 3</div>
+            <div class="span-col-2">Item 4</div>
+            <div class="span-col-2">Item 5</div>
+            <div class="span-col-2">Item 6</div>
+            <div class="left-side-footer">
+                <div class="contact-email"><a href="mailto:info@synthetic_samurai.com">info@synthetic_samurai.com</a></div>
+            </div>
+            <div class="right-side-footer">
+                <div class="contact-2">built by me.</div>
+            </div>
+            <div id="secret-modal" class="secret-overlay">
+                <div id="close-overlay-btn">CLOSE</div>
+                <div id="title-overlay-txt">
+                    blah blah blah some information
+                </div>
+            </div>
+          </div>
+          
+
+        <!-- <div class="grid-wrapper">
+            <div id="title">
+                SYNTHETIC SAMURAI
+                <span class="titletooltip">Hey. You found a secret! click to find out the origins of this title.</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="main-nav">Home</a></li>
+                    <li><a href="#" class="main-nav">About</a></li>
+                    <li><a href="#" class="main-nav">Work</a></li>
+                    <li><a href="#" class="main-nav">Lab</a></li>
+                    <li><a href="#" id="nav-secret" class="main-nav">Secrets</a></li>
                 </ul>
             </nav>
             <div class="grid-main">
                 <div class="intro">
-                    <h1 class="intro-headline" data-target-resolver>HI</h1>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end development work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
-                    <p>I'm Chris. I do work for the web. most of the time it's front-end work, but i went to design school so go figure.</p>
+                    <h1 class="intro-headline" data-target-resolver></h1>
+                    <p>I do work for the web. most of the time it's front-end development work, but i went to design school so go figure.</p>
+                    <p>I'm also Canadian. scroll down to read more.</p>
+                    <div class="email-me"><a id="mail-link" href="mailto:synthetic_samurai@hotmail.com?Subject=Let's%20talk">email me</a></div>
                 </div>
                 <div class="flex-wrapper">
                     <span class="image"></span>
@@ -85,7 +115,7 @@
             <div id="title-overlay">
                 blah blah blah some information
             </div>
-        </div>
+        </div> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.2/gsap.js"></script>
         <script src="js/scripts.js"></script>
     </body>
