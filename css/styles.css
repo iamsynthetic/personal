@@ -5,7 +5,8 @@ html, body{
     background: white;
 	font-family: 'Space Mono', monospace;
 	font-weight: 400;
-	letter-spacing: .03rem;
+    letter-spacing: 1px;
+    font-size:1rem;
 	line-height: 1;
     margin: 0;
     height:calc("100vh - 40px");
@@ -16,15 +17,19 @@ html, body{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* grid-gap: 10px; */
+    grid-template-rows:20px auto auto;
     margin:40px;
+    justify-items: center;
+    /* height:calc(100vh - 80px); */
 }
-.span-col-2{grid-column: span 2 / auto;}
 
 
 /* /////// TITLE /////// */
 #title{
     cursor:hand;
     margin:0;
+    grid-column: span 2 / auto;
+    text-align:center;
     /* height:14px;
     width:180px; */
     font-family: 'Work Sans', sans-serif;
@@ -81,11 +86,16 @@ html, body{
 
 /* /////////////////////////////// START NAV //////////////////////////////////*/
 
+nav {
+    grid-column: span 2;
+    margin-top:20px;
+}
+
 nav ul {
     display: flex;
     margin:0;
     padding:0;
-    justify-content:flex-end;
+    justify-content:center;
     text-decoration:none;
     list-style:none;
 }
@@ -95,6 +105,24 @@ nav ul li {
 }
 
 /* /////////////////////////////// END NAV ////////////////////////////////////*/
+
+
+
+
+/* /////////////////////////////// START MAIN /////////////////////////////////*/
+
+.span-col-2 {
+    grid-column: span 2;
+    opacity:.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:calc(100vh - 140px);
+}
+
+/* /////////////////////////////// END MAIN //////////////////////////////////*/
+
 
 
 
