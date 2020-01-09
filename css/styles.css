@@ -96,12 +96,20 @@ nav ul {
     margin:0;
     padding:0;
     justify-content:center;
-    text-decoration:none;
     list-style:none;
 }
 
 nav ul li {
     margin-left:20px;
+    /* opacity: .6; */
+}
+
+nav ul li a{
+    text-decoration:none;
+    color: black;
+    /* opacity: .6; */
+    /* font-weight: bold; */
+    /* font-weight: 700; */
 }
 
 /* /////////////////////////////// END NAV ////////////////////////////////////*/
@@ -111,14 +119,22 @@ nav ul li {
 
 /* /////////////////////////////// START MAIN /////////////////////////////////*/
 
+
+#home-section{
+    display:block;
+}
 .span-col-2 {
     grid-column: span 2;
-    opacity:.6;
+    opacity: .6;
     display: flex;
     justify-content: center;
     align-items: center;
     width:100%;
     height:calc(100vh - 140px);
+}
+
+#about-section, #work-section, #lab-section {
+    display:none;
 }
 
 /* /////////////////////////////// END MAIN //////////////////////////////////*/

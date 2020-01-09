@@ -1,4 +1,10 @@
 
+//* ////////////////////////////////////////////////// VARIABLES ////////////////////////////////////////////////// *//
+
+//
+//
+
+
 
 //* ////////////////////////////////////////////////// EVENT LISTENERS /////////////////////////////////////////// *//
 
@@ -12,24 +18,28 @@ let tooltip = document.querySelectorAll('.titletooltip');
 let _title = document.getElementById("title");
 let _overlay = document.querySelectorAll('.secret-overlay');
 let _overlayclose = document.getElementById('close-overlay-btn');
-let _overlaytxt = document.getElementById('title-overlay-txt');
+let _overlaytxt = document.getElementById('title-overlay');
 let _maillink = document.getElementById('mail-link');
-let _mainnav = document.querySelectorAll('main-nav');
+let _mainnav = document.querySelectorAll('.main-nav');
+//var navelements = document.querySelectorAll('.main-nav');
+
+let clickedbtn = 'about';
 
 TweenMax.set(tooltip, {opacity:0, display:"none"})
 TweenMax.set(_overlay, {opacity:0, display:"none"})
 TweenMax.set(_overlayclose, {opacity:0, display:"none"})
 TweenMax.set(_overlaytxt, {opacity:0, display:"none"})
 TweenMax.set(_maillink, {opacity:.4})
-//TweenMax.set(_mainnav, {opacity:.4})
+TweenMax.set(_mainnav, {opacity:.5})
+TweenMax.set('#about', {opacity:1})
 
 //so this works on older browsers
 _title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
 _title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
 _title.addEventListener("click", function(){showoverlay(), false})
 _overlayclose.addEventListener("click", function(){hideoverlay(), false})
-_maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
-_maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, null), false})
+// _maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
+// _maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, null), false})
 
 
 //* ////////////////////////////////////////////////// ANIMATIONS /////////////////////////////////////////////// *//
@@ -38,41 +48,53 @@ _maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, nul
 //
 
 
-var navelements = document.querySelectorAll('.main-nav');
-navelements.forEach(function(element){
+_mainnav.forEach(function(element){
+  
     element.addEventListener('mouseenter', function(e){
         e.preventDefault();
-        // let active = document.querySelector('.selected');
-        // active.classList.remove('selected');
-        // this.classList.add('selected');
-        console.log("this is e.target.name " + element.name);
-        console.log("this is e.target.id: " + this.target.id);
-        if(document.getElementById("nav-secret").style.opacity="0"){
-          console.log('nav-secret is set to 0 opacita');
-          TweenMax.to(".main-nav", {opacity:.4, duration:.5})
-          TweenMax.to(this, {opacity:1, duration:.5})
-          TweenMax.to("#nav-secret", {opacity:0, duration:.5})
-        }
-        else{
-          TweenMax.to(".main-nav", {opacity:.4, duration:.5})
-          TweenMax.to(this, {opacity:1, duration:.5})
-        }
+        
+        console.log('mouseenter this.id is: ' + this.id);
+        console.log('mouseenter clickedbtn is: ' + clickedbtn);
+
+        TweenMax.to(".main-nav", {opacity:.2, duration:.5})
+        TweenMax.to(this, {opacity:1, duration:.5})
     });
     element.addEventListener('mouseleave', function(e){
         e.preventDefault();
-        // let active = document.querySelector('.selected');
-        // active.classList.remove('selected');
-        // this.classList.add('selected');
-        if(document.getElementById("nav-secret").style.opacity="0"){
-          console.log('nav-secret is set to 0 opacita');
-          TweenMax.to(".main-nav", {opacity:1, duration:.5})
-          TweenMax.to(this, {opacity:1, duration:.5})
-          TweenMax.to("#nav-secret", {opacity:0, duration:.5})
-        }
-        else{
-          TweenMax.to(".main-nav", {opacity:1, duration:.5})
-          TweenMax.to(this, {opacity:1, duration:.5})
-          TweenMax.to("#nav-secret", {opacity:1, duration:.5})
+        
+        console.log('mouseleave this.id is: ' + this.id);
+        console.log('mouseleave clickedbtn is: ' + clickedbtn);
+
+        TweenMax.to(".main-nav", {opacity:.5, duration:.5})
+        //if(this.id == clickedbtn){
+          var activebtn = '#' + clickedbtn;
+          TweenMax.to(activebtn, {opacity:1, duration:.5})
+        //}
+    });
+    element.addEventListener('click', function(e){
+        e.preventDefault();
+        console.log(this.id);
+        clickedbtn = this.id;
+
+        console.log('click this.id is: ' + this.id);
+        console.log('click clickedbtn is: ' + clickedbtn);
+        
+        var stringdivclicked = String(this.id);
+        console.log('stringdivclicked is: ' + stringdivclicked);
+
+        var stringsection = stringdivclicked + '-section';
+        console.log('stringsection is: ' + stringsection);
+
+        var thesection = document.getElementById(stringsection);
+        console.log('thesection is: ' + thesection);
+
+        var divs = document.getElementsByClassName('content-section');
+        
+        TweenMax.to(divs, {opacity:0, display:"none", duration:1, onComplete:showClicked, onCompleteParams:[thesection]})
+        TweenMax.to(this, {opacity:1, display:"block", duration:1})
+
+        function showClicked(obj){
+          TweenMax.to(obj, {opacity:1, display:"block", duration:1})
         }
     });
 });
