@@ -100,7 +100,8 @@ nav ul {
 }
 
 nav ul li {
-    margin-left:20px;
+    margin-left: 10px;
+    margin-right: 10px;
     /* opacity: .6; */
 }
 
@@ -125,12 +126,24 @@ nav ul li a{
 }
 .span-col-2 {
     grid-column: span 2;
-    opacity: .6;
+    /* opacity: .6; */
     display: flex;
     justify-content: center;
     align-items: center;
     width:100%;
     height:calc(100vh - 140px);
+}
+
+#about-section{
+    width:100vw;
+    align-items:center;
+    text-align:center;
+}
+
+.txt {
+    opacity:.5;
+    font-size:1rem;
+    font-weight:400;
 }
 
 #about-section, #work-section, #lab-section {
@@ -192,14 +205,15 @@ nav ul li a{
 
     nav{
         height:auto;
-        margin-top:40px;
+        /* margin-top:40px; */
+        /* padding-top: 10px; */
     }
     nav ul {
         justify-content: flex-start;
     }
     nav ul li {
-        margin-right:20px;
-        margin-left:0px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 
     .right-side-footer{

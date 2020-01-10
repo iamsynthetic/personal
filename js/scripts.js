@@ -32,12 +32,13 @@ TweenMax.set(_overlaytxt, {opacity:0, display:"none"})
 TweenMax.set(_maillink, {opacity:.4})
 TweenMax.set(_mainnav, {opacity:.5})
 TweenMax.set('#about', {opacity:1})
+TweenMax.set('#about-section', {opacity:0, display:'block'})
 
 //so this works on older browsers
 _title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
 _title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
 _title.addEventListener("click", function(){showoverlay(), false})
-_overlayclose.addEventListener("click", function(){hideoverlay(), false})
+//_overlayclose.addEventListener("click", function(){hideoverlay(), false})
 // _maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
 // _maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, null), false})
 
@@ -47,7 +48,12 @@ _overlayclose.addEventListener("click", function(){hideoverlay(), false})
 //
 //
 
+//intro animation
 
+TweenMax.to('#about-section', {opacity:1, duration:.5, delay:1, onComplete:function(){resolver.resolve(options, callback)}})
+
+
+//nav animation
 _mainnav.forEach(function(element){
   
     element.addEventListener('mouseenter', function(e){
@@ -91,8 +97,15 @@ _mainnav.forEach(function(element){
         var divs = document.getElementsByClassName('content-section');
         
         TweenMax.to(divs, {opacity:0, display:"none", duration:1, onComplete:showClicked, onCompleteParams:[thesection]})
-        TweenMax.to(this, {opacity:1, display:"block", duration:1})
+        TweenMax.to(this, {opacity:1, display:"block", duration:1, onComplete:doAnimation})
 
+        function doAnimation(){
+          console.log(clickedbtn);
+          if(clickedbtn == 'about'){
+            console.log("resolver")
+            resolver.resolve(options, callback);
+          }
+        }
         function showClicked(obj){
           TweenMax.to(obj, {opacity:1, display:"block", duration:1})
         }
@@ -244,7 +257,7 @@ const resolver = {
     }, 10000);
   }
   
-  resolver.resolve(options, callback);
+  //resolver.resolve(options, callback);
 
 
 
