@@ -32,11 +32,11 @@ TweenMax.set(_overlaytxt, {opacity:0, display:"none"})
 TweenMax.set(_maillink, {opacity:.4})
 TweenMax.set(_mainnav, {opacity:.5})
 TweenMax.set('#about', {opacity:1})
-TweenMax.set('#about-section', {opacity:0, display:'block'})
+TweenMax.set('#about-section', {opacity:0, display:'grid'})
 
 //so this works on older browsers
-_title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
-_title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
+//_title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
+//_title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
 _title.addEventListener("click", function(){showoverlay(), false})
 //_overlayclose.addEventListener("click", function(){hideoverlay(), false})
 // _maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
@@ -97,7 +97,7 @@ _mainnav.forEach(function(element){
         var divs = document.getElementsByClassName('content-section');
         
         TweenMax.to(divs, {opacity:0, display:"none", duration:1, onComplete:showClicked, onCompleteParams:[thesection]})
-        TweenMax.to(this, {opacity:1, display:"block", duration:1, onComplete:doAnimation})
+        TweenMax.to(this, {opacity:1, display:"grid", duration:1, onComplete:doAnimation})
 
         function doAnimation(){
           console.log(clickedbtn);
@@ -107,27 +107,27 @@ _mainnav.forEach(function(element){
           }
         }
         function showClicked(obj){
-          TweenMax.to(obj, {opacity:1, display:"block", duration:1})
+          TweenMax.to(obj, {opacity:1, display:"grid", duration:1})
         }
     });
 });
 
-function showoverlay(){
-  TweenMax.to(_overlay, {opacity:1, display:"block", duration:.5})
-  TweenMax.to(_overlayclose, {opacity:1, display:"block", duration:.2})
-  TweenMax.to(_overlaytxt, {opacity:1, display:"block", duration:.2})
-}
+// function showoverlay(){
+//   TweenMax.to(_overlay, {opacity:1, display:"block", duration:.5})
+//   TweenMax.to(_overlayclose, {opacity:1, display:"block", duration:.2})
+//   TweenMax.to(_overlaytxt, {opacity:1, display:"block", duration:.2})
+// }
 
-function hideoverlay(){
-  TweenMax.to(_overlay, {opacity:0, display:"none", duration:.5})
-  TweenMax.to(_overlayclose, {opacity:0, display:"none", duration:.2})
-  TweenMax.to(_overlaytxt, {opacity:0, display:"none", duration:.2})
-}
+// function hideoverlay(){
+//   TweenMax.to(_overlay, {opacity:0, display:"none", duration:.5})
+//   TweenMax.to(_overlayclose, {opacity:0, display:"none", duration:.2})
+//   TweenMax.to(_overlaytxt, {opacity:0, display:"none", duration:.2})
+// }
 
-function fadeinout(obj, opa, disp, dur=.2)
-{
-    TweenMax.to(obj, {opacity:opa, display:disp, duration:dur})
-}
+// function fadeinout(obj, opa, disp, dur=.2)
+// {
+//     TweenMax.to(obj, {opacity:opa, display:disp, duration:dur})
+// }
 
 
 
@@ -199,7 +199,7 @@ const resolver = {
           if (offset <= resolveString.length) {
             doResolverEffect(nextOptions, callback);
           } else if (typeof callback === "function") {
-            //callback();
+            callback();
           }
         });
       };
@@ -212,7 +212,13 @@ const resolver = {
   * Source: http://theportalwiki.com/wiki/GLaDOS_voice_lines#Chapter_9:_The_Part_Where_He_Kills_You
   */
   const strings = [
-    'If You Must Know, My Name Is Chris.'
+    // 'If You Must Know, My Name Is Chris.',
+    'Canadian.',
+    'A web developer.',
+    'A husband.',
+    'A father.',
+    'A gamer.',
+    'A reader.'
     // 'You know, being Caroline taught me a valuable lesson. I thought you were my greatest enemy. When all along you were my best friend.',
     // 'The surge of emotion that shot through me when I saved your life taught me an even more valuable lesson: where Caroline lives in my brain.',
     // 'Goodbye, Caroline.',
@@ -254,7 +260,7 @@ const resolver = {
       
       let nextOptions = Object.assign({}, options, {resolveString: strings[counter]});
       resolver.resolve(nextOptions, callback);
-    }, 10000);
+    }, 3000);
   }
   
   //resolver.resolve(options, callback);
