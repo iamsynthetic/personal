@@ -17,7 +17,7 @@ html, body{
     display: grid;
     grid-template-columns: repeat(1, [col-start] 1fr);
     /* grid-gap: 10px; */
-    grid-template-rows:20px auto auto;
+    grid-template-rows: 20px 60px auto;
     margin:40px;
     justify-items: center;
     height:calc(100vh - 80px);
@@ -90,6 +90,7 @@ html, body{
 nav {
     grid-column: span 12;
     margin-top:20px;
+    text-align: center;
 }
 
 nav ul {
@@ -132,35 +133,42 @@ nav ul li a{
     height:calc(100vh - 140px);
 } */
 
-#about-section, #work-section, #lab-section {
+#about-section, #work-section, #contact-section, #lab-section {
     display:none;
 }
 
-#about-section{
+#about-section, #contact-section, #lab-section{
     /* width:100vw; */
     /*     align-items:center;
     text-align:center; */
     grid-column: span 1;
     display: none;
-    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-template-columns: repeat(5, [col-start] 1fr);
+    grid-template-rows: repeat(5, [row-start] 1fr);
     margin: 0;
     width:100%;
+    height: calc(100vh - 160px);
+    /* height: 0px; */
+    justify-items: center;
+    align-items align-content: center;
+    align-items: s;
 }
-
 .about1{
-    grid-column: col-start 1 / span 12;
+    grid-column: col-start 3;
+    grid-row:  row-start 3;
 }
 
 .about2{
-    grid-column: col-start 6 / span 2;
+    /* grid-column: col-start 1 / span 12; */
 }
 
 .txt {
     opacity:.5;
     font-size:1rem;
     font-weight:400;
-    grid-column: col-start / span 12;
+    /* grid-column: col-start / span 12; */
     text-align: center;
+    /* height: 20px; */
 }
 
 .work-img{
@@ -193,13 +201,21 @@ nav ul li a{
     gutter: 10px;
 }
 
-#lab-section{
+/* #contact-section{
     grid-column: span 1;
     display: none;
     grid-template-columns: repeat(12, [col-start] 1fr);
     margin: 0;
     width:100%;
 }
+
+#lab-section{
+    grid-column: span 1;
+    display: none;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    margin: 0;
+    width:100%;
+} */
 
 /* /////////////////////////////// END MAIN //////////////////////////////////*/
 
