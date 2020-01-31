@@ -11,106 +11,123 @@
 //
 //
 
-// this sets up the listener for mousemove on title
-document.addEventListener('mousemove', fn, false);
+// // this sets up the listener for mousemove on title
+// document.addEventListener('mousemove', fn, false);
 
-let tooltip = document.querySelectorAll('.titletooltip');
-let _title = document.getElementById("title");
-let _overlay = document.querySelectorAll('.secret-overlay');
-let _overlayclose = document.getElementById('close-overlay-btn');
-let _overlaytxt = document.getElementById('title-overlay');
-let _maillink = document.getElementById('mail-link');
-let _mainnav = document.querySelectorAll('.main-nav');
-//var navelements = document.querySelectorAll('.main-nav');
+// let tooltip = document.querySelectorAll('.titletooltip');
+// let _title = document.getElementById("title");
+// let _overlay = document.querySelectorAll('.secret-overlay');
+// let _overlayclose = document.getElementById('close-overlay-btn');
+// let _overlaytxt = document.getElementById('title-overlay');
+// let _maillink = document.getElementById('mail-link');
+// let _mainnav = document.querySelectorAll('.main-nav');
+// //var navelements = document.querySelectorAll('.main-nav');
 
-let clickedbtn = 'about';
+let thebuttons = document.querySelectorAll('.cta');
 
-TweenMax.set(tooltip, {opacity:0, display:"none"})
-TweenMax.set(_overlay, {opacity:0, display:"none"})
-TweenMax.set(_overlayclose, {opacity:0, display:"none"})
-TweenMax.set(_overlaytxt, {opacity:0, display:"none"})
-TweenMax.set(_maillink, {opacity:.4})
-TweenMax.set(_mainnav, {opacity:.5})
-TweenMax.set('#about', {opacity:1})
-TweenMax.set('#about-section', {opacity:0, display:'grid'})
+// let clickedbtn = 'about';
 
-//so this works on older browsers
-//_title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
-//_title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
-_title.addEventListener("click", function(){showoverlay(), false})
-//_overlayclose.addEventListener("click", function(){hideoverlay(), false})
-// _maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
-// _maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, null), false})
+// TweenMax.set(tooltip, {opacity:0, display:"none"})
+// TweenMax.set(_overlay, {opacity:0, display:"none"})
+// TweenMax.set(_overlayclose, {opacity:0, display:"none"})
+// TweenMax.set(_overlaytxt, {opacity:0, display:"none"})
+// TweenMax.set(_maillink, {opacity:.4})
+// TweenMax.set(_mainnav, {opacity:.5})
+// TweenMax.set('#about', {opacity:1})
+// TweenMax.set('#about-section', {opacity:0, display:'grid'})
 
-
-//* ////////////////////////////////////////////////// ANIMATIONS /////////////////////////////////////////////// *//
-
-//
-//
-
-//intro animation
-
-TweenMax.to('#about-section', {opacity:1, duration:.5, delay:1, onComplete:function(){resolver.resolve(options, callback)}})
+// //so this works on older browsers
+// //_title.addEventListener("mouseenter", function(){fadeinout(tooltip, 1, "block"), false})
+// //_title.addEventListener("mouseleave", function(){fadeinout(tooltip, 0, "none"), false})
+// _title.addEventListener("click", function(){showoverlay(), false})
+// //_overlayclose.addEventListener("click", function(){hideoverlay(), false})
+// // _maillink.addEventListener("mouseenter", function(){fadeinout(_maillink, 1, null), false})
+// // _maillink.addEventListener("mouseleave", function(){fadeinout(_maillink, .4, null), false})
 
 
-//nav animation
-_mainnav.forEach(function(element){
+// //* ////////////////////////////////////////////////// ANIMATIONS /////////////////////////////////////////////// *//
+
+// //
+// //
+
+thebuttons.forEach(function(element){
+  element.addEventListener('mouseenter', function(e){
+    e.preventDefault();
+    console.log('roll over')
+
+    TweenMax.to(this, {backgroundColor:'#FF70FA', duration:.4})
+  })
   
-    element.addEventListener('mouseenter', function(e){
-        e.preventDefault();
+  element.addEventListener('mouseleave', function(e){
+    e.preventDefault();
+    console.log('roll out');
+
+    TweenMax.to(this, {backgroundColor:'#63FFFD', duration:.4})
+  })
+})
+// //intro animation
+
+// TweenMax.to('#about-section', {opacity:1, duration:.5, delay:1, onComplete:function(){resolver.resolve(options, callback)}})
+
+
+// //nav animation
+// _mainnav.forEach(function(element){
+  
+//     element.addEventListener('mouseenter', function(e){
+//         e.preventDefault();
         
-        console.log('mouseenter this.id is: ' + this.id);
-        console.log('mouseenter clickedbtn is: ' + clickedbtn);
+//         console.log('mouseenter this.id is: ' + this.id);
+//         console.log('mouseenter clickedbtn is: ' + clickedbtn);
 
-        TweenMax.to(".main-nav", {opacity:.2, duration:.5})
-        TweenMax.to(this, {opacity:1, duration:.5})
-    });
-    element.addEventListener('mouseleave', function(e){
-        e.preventDefault();
+//         TweenMax.to(".main-nav", {opacity:.2, duration:.5})
+//         TweenMax.to(this, {opacity:1, duration:.5})
+//     });
+//     element.addEventListener('mouseleave', function(e){
+//         e.preventDefault();
         
-        console.log('mouseleave this.id is: ' + this.id);
-        console.log('mouseleave clickedbtn is: ' + clickedbtn);
+//         console.log('mouseleave this.id is: ' + this.id);
+//         console.log('mouseleave clickedbtn is: ' + clickedbtn);
 
-        TweenMax.to(".main-nav", {opacity:.5, duration:.5})
-        //if(this.id == clickedbtn){
-          var activebtn = '#' + clickedbtn;
-          TweenMax.to(activebtn, {opacity:1, duration:.5})
-        //}
-    });
-    element.addEventListener('click', function(e){
-        e.preventDefault();
-        console.log(this.id);
-        clickedbtn = this.id;
+//         TweenMax.to(".main-nav", {opacity:.5, duration:.5})
+//         //if(this.id == clickedbtn){
+//           var activebtn = '#' + clickedbtn;
+//           TweenMax.to(activebtn, {opacity:1, duration:.5})
+//         //}
+//     });
+//     element.addEventListener('click', function(e){
+//         e.preventDefault();
+//         console.log(this.id);
+//         clickedbtn = this.id;
 
-        console.log('click this.id is: ' + this.id);
-        console.log('click clickedbtn is: ' + clickedbtn);
+//         console.log('click this.id is: ' + this.id);
+//         console.log('click clickedbtn is: ' + clickedbtn);
         
-        var stringdivclicked = String(this.id);
-        console.log('stringdivclicked is: ' + stringdivclicked);
+//         var stringdivclicked = String(this.id);
+//         console.log('stringdivclicked is: ' + stringdivclicked);
 
-        var stringsection = stringdivclicked + '-section';
-        console.log('stringsection is: ' + stringsection);
+//         var stringsection = stringdivclicked + '-section';
+//         console.log('stringsection is: ' + stringsection);
 
-        var thesection = document.getElementById(stringsection);
-        console.log('thesection is: ' + thesection);
+//         var thesection = document.getElementById(stringsection);
+//         console.log('thesection is: ' + thesection);
 
-        var divs = document.getElementsByClassName('content-section');
+//         var divs = document.getElementsByClassName('content-section');
         
-        TweenMax.to(divs, {opacity:0, display:"none", duration:1, onComplete:showClicked, onCompleteParams:[thesection]})
-        TweenMax.to(this, {opacity:1, display:"grid", duration:1, onComplete:doAnimation})
+//         TweenMax.to(divs, {opacity:0, display:"none", duration:1, onComplete:showClicked, onCompleteParams:[thesection]})
+//         TweenMax.to(this, {opacity:1, display:"grid", duration:1, onComplete:doAnimation})
 
-        function doAnimation(){
-          console.log(clickedbtn);
-          if(clickedbtn == 'about'){
-            console.log("resolver")
-            resolver.resolve(options, callback);
-          }
-        }
-        function showClicked(obj){
-          TweenMax.to(obj, {opacity:1, display:"grid", duration:1})
-        }
-    });
-});
+//         function doAnimation(){
+//           console.log(clickedbtn);
+//           if(clickedbtn == 'about'){
+//             console.log("resolver")
+//             resolver.resolve(options, callback);
+//           }
+//         }
+//         function showClicked(obj){
+//           TweenMax.to(obj, {opacity:1, display:"grid", duration:1})
+//         }
+//     });
+// });
 
 // function showoverlay(){
 //   TweenMax.to(_overlay, {opacity:1, display:"block", duration:.5})
